@@ -10,8 +10,8 @@
 # Webserver
 
 # General
-DOCUMENT_ROOT=/app/public/
-DOCUMENT_INDEX=index.php
+WEB_DOCUMENT_ROOT=/app/public/
+WEB_DOCUMENT_INDEX=index.php
 CLI_SCRIPT=php /app/index.php
 
 #######################################
