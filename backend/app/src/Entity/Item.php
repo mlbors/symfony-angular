@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
+use Doctrine\Common\Collections\Collection as Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -34,6 +36,23 @@ class Item
      * @Assert\NotBlank()
      */
     private $createdAt;
+
+    /**
+     * Many Items have Many Taxonomies.
+     * @ORM\ManyToMany(targetEntity="Taxonomy", inversedBy="items")
+     * @ORM\JoinTable(name="items_taxonomies",
+     *      joinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="taxonomy_id", referencedColumnName="id")})
+     */
+    private $taxonomies;
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->taxonomies = new ArrayCollection();
+    }
 
     /**
      * Get the value of id
@@ -108,6 +127,26 @@ class Item
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * Get many Items have Many Taxonomies.
+     */ 
+    public function getTaxonomies()
+    {
+        return $this->taxonomies;
+    }
+
+    /**
+     * Set many Items have Many Taxonomies.
+     *
+     * @return  self
+     */ 
+    public function setTaxonomies($taxonomies)
+    {
+        $this->taxonomies = $taxonomies;
+
         return $this;
     }
 }

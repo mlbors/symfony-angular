@@ -1,0 +1,29 @@
+/**
+ * Symfony Angular - SCSS - Imags
+ *
+ * since		2018.02.01
+ * version		1.0.0.0
+ * author		mlbors
+ * copyright	-
+ */
+
+img {
+    
+}
+.img-ajax-loader {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    top: 50%;
+    left: 50%;
+    margin-top: -37.5px;
+    margin-left: -37.5px
+}
+
+.logo {
+
+    img {
+        max-width: 100%;
+    }
+
+}
