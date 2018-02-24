@@ -1,0 +1,73 @@
+/**
+ * Symfony Angular - SCSS - Modules
+ *
+ * since		2018.02.01
+ * version		1.0.0.0
+ * author		mlbors
+ * copyright	-
+ */
+
+/****************************/
+/********** BANNER **********/
+/****************************/
+
+.banner {
+
+    &,
+    .banner-content {
+        position: relative;
+        display: block;
+        margin: 0;
+        clear: both;
+    }
+
+    & {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .banner-content {
+        padding: $myGutter;
+    }
+
+    .bg-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .main-image {
+        width: 300px;
+        height: auto;
+    }
+
+    @for $i from 1 through 6 {
+    
+        h#{$i}, .h#{$i} {
+            color: $myWhite;
+        }
+    
+    }
+
+    @include my-links-setter($myWhite, $myWhite, $txtLinkDecoration, $txtLinkDecorationH, $linkOpacity, $linkOpacityH, $transition: true);
+
+    a.btn {
+
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:active,
+        &:focus {
+            border-color: $myWhite !important;
+            color: $myWhite !important;
+        }
+    }
+
+    p {
+        color: $myWhite;
+    }
+
+}
