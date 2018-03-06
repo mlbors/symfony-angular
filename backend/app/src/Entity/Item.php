@@ -47,11 +47,21 @@ class Item
     private $taxonomies;
 
     /**
+     * Many Items have Many Attributes.
+     * @ORM\ManyToMany(targetEntity="Attribute", inversedBy="items")
+     * @ORM\JoinTable(name="items_attributes",
+     *      joinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="attribute_id", referencedColumnName="id")})
+     */
+    private $attributes;
+
+    /**
      * Construct
      */
     public function __construct()
     {
         $this->taxonomies = new ArrayCollection();
+        $this->attributes = new ArrayCollection();
     }
 
     /**
@@ -131,7 +141,7 @@ class Item
     }
 
     /**
-     * Get many Items have Many Taxonomies.
+     * Get the value of Taxonomies.
      */ 
     public function getTaxonomies()
     {
@@ -139,14 +149,32 @@ class Item
     }
 
     /**
-     * Set many Items have Many Taxonomies.
+     * Set set the value Taxonomies.
      *
      * @return  self
      */ 
     public function setTaxonomies($taxonomies)
     {
         $this->taxonomies = $taxonomies;
+        return $this;
+    }
 
+    /**
+     * Get the value of Attributes.
+     */ 
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Set set the value Attributes.
+     *
+     * @return  self
+     */ 
+    public function setAttributes($attributes)
+    {
+        $this->attributes = $attributes;
         return $this;
     }
 }
